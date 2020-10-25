@@ -4,9 +4,9 @@
 
 <table>
   <tbody>
-    <% @artists.each do |artist| %>
+     <% @artists.each do |artist| %>
       <tr>
-        <td><%= artist.nome %></td>
+        <td class="artista"><%= artist.nome %></td>
         <% unless artist.nacionalidade.nil? %> 
           <td class='nacionalidade' ><%= artist.nacionalidade.match(/^(.*)\s/).nil? ?
            "Indisponivel" : artist.nacionalidade.match(/^(.*)\s/)[1] %></td>
@@ -17,5 +17,39 @@
         <% end %>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+    </table>
+  <div id="map"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/1.12.0/mapbox-gl.js"></script>
+<script type='module'>
+
+  const artistas = document.querySelectorAll('.artista');
+  artistas.forEach(artista=>{
+  artista.addEventListener("click",function(event){
+    console.log(event.target.nextElementSibling.innerText)
+    buscar_pais(event.target.nextElementSibling.innerText)
+  })
+})
+  function buscar_pais(location){
+  fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=pk.eyJ1IjoiZ2l1bGlhbmFzdHIiLCJhIjoiY2tnb25xNW9xMHJwMjJzcDFrNmM1eXZqNiJ9.h-QEC2IF4CJjDdl4RKpeCw`)
+    .then(response => response.json())
+    .then((data) => {
+      // const li = `<li>${results}</li>`;
+      // results.insertAdjacentHTML("beforeend", li);
+      // mapboxgl.accessToken = 'ppk.eyJ1IjoiZ2l1bGlhbmFzdHIiLCJhIjoiY2tnb25xNW9xMHJwMjJzcDFrNmM1eXZqNiJ9.h-QEC2IF4CJjDdl4RKpeCw';
+       mapboxgl.accessToken = 'pk.eyJ1IjoiZ2l1bGlhbmFzdHIiLCJhIjoiY2tnb25xNW9xMHJwMjJzcDFrNmM1eXZqNiJ9.h-QEC2IF4CJjDdl4RKpeCw'
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [data.features[0].center[0], data.features[0].center[1]],
+        zoom: 12
+      });
+
+      new mapboxgl.Marker()
+        .setLngLat([data.features[0].center[0], data.features[0].center[1]])
+        .addTo(map);
+    });
+  }
+
+</script>

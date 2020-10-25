@@ -1,10 +1,19 @@
 import mapboxgl from 'mapbox-gl';
 
-const results = document.getElementById('results');
-const userInput = "Brasil";
+const results = document.getElementsByClassName('results');
+const artistas = document.querySelectorAll('artista');
 const form = document.getElementById('form');
-console.log(userInput);
+
 const initMapbox = () => {}
+artistas.forEach(artista=>{
+  artista.addEventListener("click",function(event){
+    console.log(event)
+  })
+})
+
+
+
+
 form.addEventListener('submit', (event) => {
   // eslint-disable-next-line camelcase
   event.preventDefault();

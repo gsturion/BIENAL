@@ -7,16 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "csv"
 require "pry-byebug"
+
 Work.delete_all
 Event.delete_all
 Artist.delete_all
 
 events = Rails.root.join('lib', 'seeds', 'Events.csv')
 csv_options = { headers: :first_row }
-
 CSV.foreach(events, csv_options) do |row|
   # Here, row is an array of columns
-  
   event = {
     event_id: row['ID Evento'],
     denominacao: row['Denominação do Evento'],
@@ -28,10 +27,8 @@ CSV.foreach(events, csv_options) do |row|
   Event.create!(event)
 end
 
-
 artists = Rails.root.join('lib', 'seeds', 'Artists.csv')
 csv_options = { headers: :first_row }
-
 CSV.foreach(artists, csv_options) do |row|
   # Here, row is an array of columns
   artist = {
@@ -45,11 +42,8 @@ CSV.foreach(artists, csv_options) do |row|
   Artist.create!(artist)
 end
 
-
-
 works = Rails.root.join('lib', 'seeds', 'Works.csv')
 csv_options = { headers: :first_row }
-
 CSV.foreach(works, csv_options) do |row|
   # Here, row is an array of columns
   row['ID Evento'].split(';').each do |event_id|
