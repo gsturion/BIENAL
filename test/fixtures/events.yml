@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: MyString
+  denominacao: MyString
+  data_inicio: MyString
+  data_final: MyString
+  realizacao: MyString
+
+two:
+  event_id: MyString
+  denominacao: MyString
+  data_inicio: MyString
+  data_final: MyString
+  realizacao: MyString

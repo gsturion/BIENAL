@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  artist_id: MyString
+  nome: MyString
+  nacionalidade: MyString
+  delegacao: MyString
+
+two:
+  artist_id: MyString
+  nome: MyString
+  nacionalidade: MyString
+  delegacao: MyString

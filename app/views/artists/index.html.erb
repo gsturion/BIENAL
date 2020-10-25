@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Artists</h1>
+
+<table>
+  <tbody>
+    <% @artists.each do |artist| %>
+      <tr>
+        <td><%= artist.nome %></td>
+        <% unless artist.nacionalidade.nil? %> 
+          <td class='nacionalidade' ><%= artist.nacionalidade.match(/^(.*)\s/).nil? ?
+           "Indisponivel" : artist.nacionalidade.match(/^(.*)\s/)[1] %></td>
+        <% end %>
+        <% unless artist.delegacao.nil? %> 
+          <td class='delegacao' ><%= artist.delegacao.match(/>\s(.*)\s\(Eventos/).nil? ?
+           "Indisponivel" : artist.delegacao.match(/>\s(.*)\s\(Eventos/)[1] %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

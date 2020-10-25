@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  work_id: MyString
+  titulo: MyString
+  data: MyString
+  dimencao: MyString
+  suporte: MyString
+  tecnica: MyString
+  event: one
+  artist: one
+
+two:
+  work_id: MyString
+  titulo: MyString
+  data: MyString
+  dimencao: MyString
+  suporte: MyString
+  tecnica: MyString
+  event: two
+  artist: two
