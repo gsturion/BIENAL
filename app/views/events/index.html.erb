@@ -6,13 +6,9 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.denominacao %></td>
+        <td><%= link_to event.denominacao, event_artists_path(event) %></td>
         <td><%= event.realizacao %></td>
-        <td><% %> %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-
-

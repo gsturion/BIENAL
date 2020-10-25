@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :events do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-    resources :artists, only: [ :index, :show ]
+    resources :artists, only: [ :index ]
   end
-  root :to => "events#index"
+  root :to => "artists#index"
 end

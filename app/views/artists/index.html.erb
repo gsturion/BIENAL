@@ -2,6 +2,8 @@
 
 <h1>Artists</h1>
 
+<div id="map" style='width: 100%; height: 300px;'></div>
+
 <table>
   <tbody>
      <% @artists.each do |artist| %>
@@ -19,7 +21,6 @@
     <% end %>
     </tbody>
     </table>
-  <div id="map"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/1.12.0/mapbox-gl.js"></script>
 <script type='module'>
@@ -27,14 +28,14 @@
   const artistas = document.querySelectorAll('.artista');
   artistas.forEach(artista=>{
   artista.addEventListener("click",function(event){
-    console.log(event.target.nextElementSibling.innerText)
     buscar_pais(event.target.nextElementSibling.innerText)
   })
 })
   function buscar_pais(location){
-  fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=pk.eyJ1IjoiZ2l1bGlhbmFzdHIiLCJhIjoiY2tnb25xNW9xMHJwMjJzcDFrNmM1eXZqNiJ9.h-QEC2IF4CJjDdl4RKpeCw`)
+  fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?types=country&access_token=pk.eyJ1IjoiZ2l1bGlhbmFzdHIiLCJhIjoiY2tnb25xNW9xMHJwMjJzcDFrNmM1eXZqNiJ9.h-QEC2IF4CJjDdl4RKpeCw`)
     .then(response => response.json())
     .then((data) => {
+        console.log(data)
       // const li = `<li>${results}</li>`;
       // results.insertAdjacentHTML("beforeend", li);
       // mapboxgl.accessToken = 'ppk.eyJ1IjoiZ2l1bGlhbmFzdHIiLCJhIjoiY2tnb25xNW9xMHJwMjJzcDFrNmM1eXZqNiJ9.h-QEC2IF4CJjDdl4RKpeCw';
@@ -43,7 +44,7 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
         center: [data.features[0].center[0], data.features[0].center[1]],
-        zoom: 12
+        zoom: 2
       });
 
       new mapboxgl.Marker()
