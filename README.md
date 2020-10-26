@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version:
 
-Things you may want to cover:
+  - ruby 2.6.6p
+----------------------------------
 
-* Ruby version
+* Configuration: 
 
-* System dependencies
+  > bundle install
+  > yarn install
+  > rails db:create db:migrate
+---------------------------------
 
-* Configuration
+* Database:
 
-* Database creation
+   > rails db:seed
+---------------------------------
 
-* Database initialization
+* How to run the test suite:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+  > rails server
+---------------------------------
 
 * Deployment instructions
 
-* ...
+  > heroku create airbnb-gsturion --region=REPLACE_WITH_REGION # (eu, us, or any region available in `heroku regions` list)
+  > git push heroku master
+  > heroku run rails db:migrate
+
+
