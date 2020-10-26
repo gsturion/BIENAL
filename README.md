@@ -24,7 +24,7 @@
 
 * Deployment instructions
 
-  > heroku create airbnb-gsturion --region=REPLACE_WITH_REGION # (eu, us, or any region available in `heroku regions` list)
+  > heroku create bienal --region=us
   > git push heroku master
   > heroku run rails db:migrate
 
